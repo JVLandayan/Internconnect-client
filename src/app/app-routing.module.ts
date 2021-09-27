@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgotpassComponent } from './pages/forgotpass/forgotpass.component';
@@ -47,140 +46,144 @@ const routes: Routes = [
     path: '',
     component: LandingComponent,
   },
-  { path: 'login',  
-    component: LoginComponent,
-    canActivate:[RouteGuardLogin]
-  },
-  { path: 'forgotpass', 
+  { path: 'login', component: LoginComponent, canActivate: [RouteGuardLogin] },
+  {
+    path: 'forgotpassword',
     component: ForgotpassComponent,
-    canActivate:[RouteGuardLogin]
-  },
-  { 
-    path: 'endorsementform',
-    component: EndorsementformComponent,
-    canActivate:[RouteGuardStudent]
-  },
-  { path: 'companydirectory', 
-    
-    component: CompanydirectoryComponent,
-  },
-  { path: 'companyprofile/:id',
-    component: CompanyprofileComponent,
+    canActivate: [RouteGuardLogin],
   },
   {
-    path:'onboard',
-    component:OnboardingComponent,
-    canActivate:[RouteGuardLogin]
+    path: 'endorsementform',
+    component: EndorsementformComponent,
+    canActivate: [RouteGuardStudent],
   },
-  { path: 'admin',
+  {
+    path: 'companydirectory',
+
+    component: CompanydirectoryComponent,
+  },
+  { path: 'companyprofile/:id', component: CompanyprofileComponent },
+  {
+    path: 'onboard',
+    component: OnboardingComponent,
+    canActivate: [RouteGuardLogin],
+  },
+  {
+    path: 'admin',
     component: AdminComponent,
     children: [
-      { path: '',
-        canActivate:[RouteGuardAdmin],
+      {
+        path: '',
+        canActivate: [RouteGuardAdmin],
         component: AdminDashboardComponent,
       },
-      { path: 'esignature',
-        canActivate:[RouteGuardCordDean],
+      {
+        path: 'esignature',
+        canActivate: [RouteGuardCordDean],
         component: AdminEsignatureComponent,
       },
-      { path: 'admin-submissions',
-        component: AdminSubmissionsComponent,
-      },
-      { path: 'new-submissions',
+      { path: 'admin-submissions', component: AdminSubmissionsComponent },
+      {
+        path: 'new-submissions',
         component: NewSubmissionsComponent,
-        canActivate:[RouteGuardCoordinator]
+        canActivate: [RouteGuardCoordinator],
       },
-      { path: 'pending-submissions',
+      {
+        path: 'pending-submissions',
         component: PendingSubmissionsComponent,
-        canActivate:[RouteGuardCoordinator]
+        canActivate: [RouteGuardCoordinator],
       },
-      { path: 'approved-submissions',
+      {
+        path: 'approved-submissions',
         component: ApprovedSubmissionsComponent,
-        canActivate:[RouteGuardCoordinator]
+        canActivate: [RouteGuardCoordinator],
       },
-      { path: 'final-submissions',
-      canActivate:[RouteGuardChairDean],
-      component: FinalSubmissionsComponent,
+      {
+        path: 'final-submissions',
+        canActivate: [RouteGuardChairDean],
+        component: FinalSubmissionsComponent,
       },
-      { path: 'update-landing',
-      canActivate:[RouteGuardThreeCombi],
-      component: LandingUpdateComponent,
+      {
+        path: 'update-landing',
+        canActivate: [RouteGuardThreeCombi],
+        component: LandingUpdateComponent,
       },
-      { path: 'update-companydirectory',
-      canActivate:[RouteGuardThreeCombi],
-      component: CompanydirectoryUpdateComponent,
+      {
+        path: 'update-companydirectory',
+        canActivate: [RouteGuardThreeCombi],
+        component: CompanydirectoryUpdateComponent,
       },
-      { path: 'update-opportunities',
-      canActivate:[RouteGuardThreeCombi],
-      component: OpportunitiesUpdateComponent,
+      {
+        path: 'update-opportunities',
+        canActivate: [RouteGuardThreeCombi],
+        component: OpportunitiesUpdateComponent,
       },
-      { path: 'chair',
-      canActivate:[RouteGuardDean],
-      component: ChairComponent,
+      {
+        path: 'chair',
+        canActivate: [RouteGuardDean],
+        component: ChairComponent,
       },
-      { path: 'coordinators',
-      component: CoordinatorComponent,
-      canActivate:[RouteGuardChair]
+      {
+        path: 'coordinators',
+        component: CoordinatorComponent,
+        canActivate: [RouteGuardChair],
       },
-      { path: 'dean',
-      canActivate:[RouteGuardDean],
-      component: DeanComponent,
+      { path: 'dean', canActivate: [RouteGuardDean], component: DeanComponent },
+      {
+        path: 'techprogram',
+        canActivate: [RouteGuardDean],
+        component: TechprogramComponent,
       },
-      { path: 'techprogram',
-      canActivate:[RouteGuardDean],
-      component: TechprogramComponent,
-      },
-      { path: 'students',
-      // for  coordinator or chair
-      canActivate:[RouteGuardCordChair],
-      component: StudentsComponent,
+      {
+        path: 'students',
+        // for  coordinator or chair
+        canActivate: [RouteGuardCordChair],
+        component: StudentsComponent,
       },
       {
         // dean pero nakasama track dito ayusin natin
-         path: 'programs',
+        path: 'programs',
         component: ProgramsComponent,
       },
-      { 
+      {
         // for chair
         path: 'sections',
-        canActivate:[RouteGuardChair],
-      component: SectionsComponent,
+        canActivate: [RouteGuardChair],
+        component: SectionsComponent,
       },
-      { path: 'reports',
-      // can activate for everybody
-      component: AdminReportsComponent,
+      {
+        path: 'reports',
+        // can activate for everybody
+        component: AdminReportsComponent,
       },
-      { path: 'events',
-      // everyone except dean?
-      component: AdminEventsComponent,
+      {
+        path: 'events',
+        // everyone except dean?
+        component: AdminEventsComponent,
       },
-      { 
+      {
         // chair or dean?
         path: 'iso',
-      component: AdminIsoComponent,
+        component: AdminIsoComponent,
       },
-      { 
+      {
         // dean
         path: 'acadyear',
-      component: AdminAcadyearComponent,
+        component: AdminAcadyearComponent,
       },
       {
         // everybody?
         path: 'logs',
-        canActivate:[RouteGuardCordDean],
+        canActivate: [RouteGuardCordDean],
         component: AdminLogsComponent,
       },
-      { path: 'updateForm/:id',
-      component: AdminLogsComponent,
-      },
+      { path: 'updateForm/:id', component: AdminLogsComponent },
     ],
   },
-
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

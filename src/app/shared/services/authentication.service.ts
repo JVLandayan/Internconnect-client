@@ -22,7 +22,7 @@ export class AuthenticationService {
 
   login(userCredit: NgForm) {
     return this.http
-      .post<userModel>(this.apiUrl + '/api/Auth/login', userCredit)
+      .post<userModel>(this.apiUrl + 'api/Auth/login', userCredit)
       .pipe(
         map((user) => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
